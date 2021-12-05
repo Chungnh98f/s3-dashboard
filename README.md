@@ -114,13 +114,15 @@ For interacting by CLI, use **awslocal** instead of **aws**
 - [ ] py-server
   - [x] CRUD bucket
   - [x] CRUD file
-  - [ ] Convert s3 client to s3 resrource
-  - [ ] Provide cache layer
+  - [ ] convert s3 client to s3 resrource
+  - [ ] provide cache layer
+  - [ ] integrate with actual service
   - [ ] add tests
 - [ ] node-server
   - [ ] CRUD bucket
   - [ ] CRUD file
-  - [ ] Provide cache layer
+  - [ ] provide cache layer
+  - [ ] integrate with actual service
   - [ ] add tests
 - [ ] env
   - [x] development
