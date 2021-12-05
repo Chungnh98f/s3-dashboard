@@ -56,6 +56,12 @@ Cons:
 ```
 ## Installation
 
+> Setting environment variables
+
+```
+cp ./py-server/.env.example ./py-server/.env
+```
+
 > Build project
 
 ```
@@ -108,6 +114,7 @@ For interacting by CLI, use **awslocal** instead of **aws**
 - [ ] py-server
   - [x] CRUD bucket
   - [x] CRUD file
+  - [ ] Convert s3 client to s3 resrource
   - [ ] Provide cache layer
   - [ ] add tests
 - [ ] node-server
