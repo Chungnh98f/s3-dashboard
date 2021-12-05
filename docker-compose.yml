@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+    environment:
+      - AWS_ACCESS_KEY_ID=foobar
+      - AWS_SECRET_ACCESS_KEY=foobar
+      - DATA_DIR=/tmp/localstack/data
+  s3py:
+    build: py-server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - localstack
+    volumes:
+      - ./py-server:/app
+  client:
+    build: client
+    ports:
+      - "80:3000"
+    volumes:
+      - ./client:/app
+    restart: always
