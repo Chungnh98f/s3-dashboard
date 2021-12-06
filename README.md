@@ -136,3 +136,8 @@ For interacting by CLI, use **awslocal** instead of **aws**
 
 - To call a container from another container in the same network, use `http://host.docker.internal:{port-of-other-service}/`.
 - To add & read environment variable in python, use package `python-dotenv`.
+
+> 2021/12/6
+
+- Access point is created to interact with a specified bucket, hence not suitable for bucket manipulation (but buckets are mostly manually created).
+- Do not provide url for s3 client (or resource) if its connect directly to actual service  

@@ -1,4 +1,5 @@
 from flask import Blueprint, request, abort
+from configs import Location
 from services.s3 import s3_client, s3_resource
 from services.serializers import dump_bucket
 from botocore.exceptions import ClientError
@@ -18,6 +19,7 @@ def list_buckets():
 @bucket_views.route('/', methods=['POST'])
 def create_bucket():
     bucket_name: str = request.json.get('name')
+    bucket_location: str = request.json.get('location', Location.SEOUL)
 
     if not bucket_name:
         abort(400, 'Please provide name for the new bucket.')
@@ -26,7 +28,12 @@ def create_bucket():
         s3_client.head_bucket(Bucket=bucket_name)
         abort(400, f'Bucket {bucket_name} is already exist.')
     except ClientError:
-        s3_client.create_bucket(Bucket=bucket_name)
+        s3_client.create_bucket(
+            Bucket=bucket_name,
+            CreateBucketConfiguration={
+                'LocationConstraint': bucket_location,
+            },
+        )
         return f'Bucket {bucket_name} is created!', 201
 
 
